@@ -1,0 +1,16 @@
+#result {
+  display: none;
+}
+
+#result textarea {
+  width: 100%;
+  height: 30em;
+}
+
+#blank_style {
+  display: none;    
+}
+
+#indicator {
+  display: none;
+}
