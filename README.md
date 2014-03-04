@@ -18,9 +18,21 @@ markdown2inao.pl 改め md2inao.pl のこれまでについては https://gist.g
 
 ### CUI版
 
+CPANからインストール
+
+    % cpanm Text::Md2Inao
+    % md2inao.pl your_markdown.md > path/to/output.txt
+
+
+リポジトリからインストール
+
     % cpanm Carton
     % carton
     % carton exec -- perl bin/md2inao.pl your_markdown.md > path/to/output.txt
+
+cpanmは以下のコマンドでインストールできます
+
+    % curl -L http://cpanmin.us > ~/bin/cpanm && chmod +x ~/cpanm
 
 ### Web版
 
@@ -489,6 +501,7 @@ Authors
 * @hsbt
 * @hokaccha
 * @suzuki
+* @gfx : Release to CPAN
 
 LICENSE
 ----------
