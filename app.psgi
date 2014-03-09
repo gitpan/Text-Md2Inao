@@ -35,7 +35,19 @@ post '/upload' => sub {
         $builder->load_filter_config('./config/id_filter.json');
         $p->builder($builder);
     }
-    $self->render(text => $p->parse(decode_utf8 $md), format => 'txt');
+
+    my @errors;
+    local $Text::Md2Inao::Logger::LOG = sub {
+        my($type, $message) = @_;
+        push @errors, { type => $type, message => $message };
+    };
+    $self->render(
+        json => {
+            content => $p->parse(decode_utf8 $md),
+            errors  => \@errors,
+        },
+        format => 'json',
+    );
 };
 
 app->types->type(txt => "text/plain;charset=UTF-8");
@@ -58,7 +70,7 @@ __DATA__
     </div>
 
     <label for='in_design' class="checkbox">
-    %= check_box in_design => 1, id => 'in_design'
+    %= check_box in_design => 1, id => 'in_design', checked => 'checked'
     InDesign出力
     </label>
     <select name="blank_style" id="blank_style">
@@ -68,6 +80,9 @@ __DATA__
     <p><button type="submit" class="btn btn-primary">Convert File</button> <img src="/img/ajax-loader.gif" alt="loading" title="loading" id="indicator"></p>
   </fieldset>
 % end
+
+<div id="error">
+</div>
 
 <div id="result">
   <p class="text-right"><a href="" id="download">ダウンロード (Google Chromeのみ)</a></p>
