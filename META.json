@@ -33,13 +33,15 @@
       "configure" : {
          "requires" : {
             "ExtUtils::MakeMaker" : "6.74",
-            "ExtUtils::MakeMaker::CPANfile" : "0.05"
+            "ExtUtils::MakeMaker::CPANfile" : "0.05",
+            "File::ShareDir::Install" : "0"
          }
       },
       "runtime" : {
          "requires" : {
             "Class::Accessor::Fast" : "0",
             "Exporter::Lite" : "0",
+            "File::ShareDir" : "0",
             "FindBin::libs" : "0",
             "HTML::TreeBuilder" : "0",
             "JSON" : "2.55",
@@ -59,5 +61,5 @@
          "url" : "https://github.com/naoya/md2inao.git"
       }
    },
-   "version" : "0.09"
+   "version" : "0.10"
 }

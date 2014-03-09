@@ -5,10 +5,17 @@ use warnings;
 use Encode;
 use Pod::Usage;
 use File::Spec;
+use FindBin qw($Bin);
 use FindBin::libs;
-use Getopt::Long qw/:config posix_default no_ignore_case bundling auto_help/;
+use Getopt::Long qw/:config posix_default no_ignore_case bundling auto_help auto_version/;
 
 use Text::Md2Inao;
+
+our $VERSION = $Text::Md2Inao::VERSION;
+if (-e "$Bin/../.git/HEAD") {
+    chomp(my $rev = `git rev-parse --short HEAD`);
+    $VERSION .= " ($rev)";
+}
 
 GetOptions(
     'output-encoding=s' => \my $output_encoding,
@@ -26,7 +33,6 @@ my $builder;
 if (!$format || $format eq 'in_design') {
     require Text::Md2Inao::Builder::InDesign;
     $builder = Text::Md2Inao::Builder::InDesign->new;
-    $builder->load_filter_config('./config/id_filter.json');
 } elsif ($format eq 'inao') {
     require Text::Md2Inao::Builder::Inao;
     $builder = Text::Md2Inao::Builder::Inao->new;
