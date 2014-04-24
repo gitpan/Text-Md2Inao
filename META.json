@@ -5,7 +5,7 @@
       "@__gfx__"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.9, CPAN::Meta::Converter version 2.133380",
+   "generated_by" : "ExtUtils::MakeMaker version 6.96, CPAN::Meta::Converter version 2.133380",
    "license" : [
       "perl_5"
    ],
@@ -57,9 +57,12 @@
    },
    "release_status" : "stable",
    "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/naoya/md2inao/issues"
+      },
       "repository" : {
          "url" : "https://github.com/naoya/md2inao.git"
       }
    },
-   "version" : "0.10"
+   "version" : "0.11"
 }
